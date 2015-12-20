@@ -96,6 +96,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 colorscheme Tomorrow-Night-Bright 
 "adding visual copy paste
 "
+set clipboard=unnamed,unnamedplus
 set mouse=a
 
 set smarttab 
