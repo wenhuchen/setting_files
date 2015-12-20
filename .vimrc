@@ -25,7 +25,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'axiaoxin/vim-json-line-format'
-Plugin 'axiaoxin/favorite-vim-colorscheme'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'junegunn/vim-emoji'
 Plugin 'mhinz/vim-startify'
 Plugin 'terryma/vim-multiple-cursors'
@@ -93,7 +93,7 @@ nnoremap <silent> <C-S> :<C-u>Update<CR>
 "adding nerd tree character
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
-colorscheme Tomorrow-Night-Bright 
+colorscheme spring  
 "adding visual copy paste
 "
 set clipboard=unnamed,unnamedplus
@@ -119,14 +119,13 @@ set splitbelow                  " Horizontal splits open below current file
 set splitright                  " Vertical splits open to the right of the current file
 
 set wildmode=longest,list       " Pressing <Tab> shows command suggestions similar to pressing <Tab> bash
-
+set cursorline cursorcolumn     " adding column cursor
 " Plugin settings
 
 let g:NERDSpaceDelims=1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:ctrlp_show_hidden = 1
-set completefunc=emoji#complete
 let g:instant_markdown_slow = 1
 
 " airline
