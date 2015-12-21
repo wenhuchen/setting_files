@@ -96,7 +96,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 colorscheme spring  
 "adding visual copy paste
 "
-set clipboard=unnamed,unnamedplus
+set clipboard=unnamed
 set mouse=a
 
 set smarttab 
