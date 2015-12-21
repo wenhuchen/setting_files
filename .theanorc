@@ -1,3 +1,8 @@
 [global]
+device=cpu
 floatX=float32
-device = cpu
+allow_gc=True
+base_compiledir=/tmp/%(user)s/theano.NOBACKUP
+
+[nvcc]
+fastmath=True 
