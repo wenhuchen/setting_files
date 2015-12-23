@@ -38,6 +38,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -89,13 +90,13 @@ command -nargs=0 -bar Update if &modified
                            \|        confirm write
                            \|    endif
                            \|endif
-nnoremap <silent> <C-S> :<C-u>Update<CR>
-"adding nerd tree character
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 colorscheme spring  
-"adding visual copy paste
-"
+
+"" setting delete key to blackhold register
+nnoremap d "_d
+vnoremap d "_d
 set clipboard=unnamed
 set mouse=a
 
@@ -127,16 +128,12 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:ctrlp_show_hidden = 1
 let g:instant_markdown_slow = 1
-
+let g:nerdtree_tabs_open_on_console_startup=1
 " airline
 let g:airline_section_y = '%{strftime("%H:%M")}'
-" " 开启tabline
 let g:airline#extensions#tabline#enabled = 1
-" " tabline中当前buffer两端的分隔字符
 let g:airline#extensions#tabline#left_sep = ' '
-" " tabline中未激活buffer两端的分隔字符
 let g:airline#extensions#tabline#left_alt_sep = '|'
-" " tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1
 "
 " " jedi
