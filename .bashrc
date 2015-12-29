@@ -3,6 +3,7 @@ export LD_LIBRARY_PATH=$HOME/local/lib
 export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
 export PROMPT_COMMAND=myLocalHistory
 export PROMPT_COMMAND=set_prompt
+export FUEL_DATA_PATH=$HOME/ebay_translation/blocks-data
 alias vim=/usr/local/Cellar/vim/7.4.979/bin/vim
 alias l='ls -l -h -tr'
 function gh()
