@@ -25,7 +25,8 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'axiaoxin/vim-json-line-format'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'tomasr/molokai'
 Plugin 'junegunn/vim-emoji'
 Plugin 'mhinz/vim-startify'
 Plugin 'terryma/vim-multiple-cursors'
@@ -92,8 +93,8 @@ command -nargs=0 -bar Update if &modified
                            \|endif
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
-colorscheme spring  
 
+colorscheme Tomorrow-Night
 "" setting delete key to blackhold register
 nnoremap d "_d
 vnoremap d "_d
