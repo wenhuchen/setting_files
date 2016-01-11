@@ -16,23 +16,24 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'walm/jshint.vim'
 Plugin 'moll/vim-node'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'sickill/vim-monokai'
 Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'axiaoxin/vim-json-line-format'
 Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'junegunn/vim-emoji'
 Plugin 'mhinz/vim-startify'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'SirVer/ultisnips'
+Plugin 'tomasr/molokai'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
@@ -94,7 +95,11 @@ command -nargs=0 -bar Update if &modified
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+syntax enable
+set t_Co=256
+set background=dark
 colorscheme Tomorrow-Night
+let g:molokai_original = 1
 "" setting delete key to blackhold register
 nnoremap d "_d
 vnoremap d "_d
@@ -130,6 +135,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:ctrlp_show_hidden = 1
 let g:instant_markdown_slow = 1
 let g:nerdtree_tabs_open_on_console_startup=1
+"
 " airline
 let g:airline_section_y = '%{strftime("%H:%M")}'
 let g:airline#extensions#tabline#enabled = 1

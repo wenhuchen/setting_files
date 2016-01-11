@@ -1,25 +1,30 @@
-export PATH=$HOME/local/bin:$PATH
+export PATH=/usr/local/bin:$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib
 export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
 export FUEL_DATA_PATH=$HOME/ebay_translation/blocks-data
 alias mou='open -a $HOME/Applications/Mou.app'
 alias vim=/usr/local/Cellar/vim/7.4.979/bin/vim
 alias l='ls -l -h -tr'
+export PROMPT_COMMAND="myLocalHistory;set_prompt"
 LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
+if [ "$TERM" == "xterm" ]; then
+    # No it isn't, it's gnome-terminal
+    export TERM=xterm-256color
+fi
 function gh()
 {
-     grep -a "$1" .history 2>/dev/null
+    grep -a "$1" .history 2>/dev/null
 }
 
 function th()
 {
-     tail .history 2>/dev/null
+    tail .history 2>/dev/null
 }
 
 function myLocalHistory()
 {
 #    if [ `ls -ld $PWD | awk '{print $3}'` == "$USER" ] ; then
-        ((date +%F.%H-%M-%S | tr -d '\n' ; history | tail -1 | sed 's:^ *[0-9]* ::g' ) | perl -ne 'print if(!/^(\S+) (ll|ls|lltr|fgt|cd|m|w|e|firefox|less|zless|th|gh|hg|file|ssh|ssp|qstat|qm|gv|acroread|corpusView\.py)\s+.*/);' >>.history) 2>/dev/null
+    ((date +%F.%H-%M-%S | tr -d '\n' ; history | tail -1 | sed 's:^ *[0-9]* ::g' ) | perl -ne 'print if(!/^(\S+) (ll|ls|lltr|fgt|cd|m|w|e|firefox|less|zless|th|gh|hg|file|ssh|ssp|qstat|qm|gv|acroread|corpusView\.py)\s+.*/);' >>.history) 2>/dev/null
 #    fi
 }
 function set_prompt()
@@ -63,4 +68,4 @@ function set_prompt()
     PS1+="$Brown\\w \\\$$Reset "
     PS1+="$Purple"
 }
-export PROMPT_COMMAND="myLocalHistory;set_prompt"
+
