@@ -1,16 +1,20 @@
 export PATH=/usr/local/bin:$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib
-export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:/Users/wenhuchen/ebay_translation/machine_translation_blocks:$PYTHONPATH
 export FUEL_DATA_PATH=$HOME/ebay_translation/blocks-data
 alias mou='open -a $HOME/Applications/Mou.app'
 alias vim=/usr/local/Cellar/vim/7.4.979/bin/vim
+alias ls='ls'
 alias l='ls -l -h -tr'
 export PROMPT_COMMAND="myLocalHistory;set_prompt"
-LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
+export CLICOLOR=1
+export LSCOLORS=Exfxcxdxbxegedabagacad
+#LS_COLORS=$LS_COLORS:'di=0;31:fi=0;32' ; export LS_COLORS
 if [ "$TERM" == "xterm" ]; then
     # No it isn't, it's gnome-terminal
     export TERM=xterm-256color
 fi
+
 function gh()
 {
     grep -a "$1" .history 2>/dev/null
@@ -37,8 +41,8 @@ function set_prompt()
     Reset='\[\e[00m\]'
     FancyX='\342\234\227'
     Checkmark='\342\234\223'
-    Purple='\[\e[0;35m\]'
-    Brown='\[\e[1;33m\]'
+    Cyan='\[\e[01;36m\]'
+    Pink='\[\e[0;35m\]'
     PS1="$Yellow\$? "
     # If it was successful, print a green check mark. Otherwise, print
     # a red X.
@@ -65,7 +69,7 @@ function set_prompt()
     fi
     # Print the working directory and prompt marker in blue, and reset
     # the text color to the default.
-    PS1+="$Brown\\w \\\$$Reset "
-    PS1+="$Purple"
+    PS1+="$Pink\\w \\\$$Reset "
+    PS1+="$Cyan"
 }
 
