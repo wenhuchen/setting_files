@@ -1,6 +1,6 @@
 export PATH=/usr/local/bin:$HOME/local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib
-export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:/Users/wenhuchen/ebay_translation/machine_translation_blocks:$PYTHONPATH
+export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
 export FUEL_DATA_PATH=$HOME/ebay_translation/blocks-data
 alias mou='open -a $HOME/Applications/Mou.app'
 alias vim=/usr/local/Cellar/vim/7.4.979/bin/vim
@@ -20,7 +20,7 @@ function gh()
     grep -a "$1" .history 2>/dev/null
 }
 
-function th()
+function tailh()
 {
     tail .history 2>/dev/null
 }

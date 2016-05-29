@@ -10,3 +10,4 @@ screen_cd()
 if [ "$TERM" == 'screen' ]; then
     alias cd=scr_cd
 fi
+. /Users/wenhuchen/torch/install/bin/torch-activate 
