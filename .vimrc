@@ -23,6 +23,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'sickill/vim-monokai'
 Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
+Plugin 'avakhov/vim-yaml'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'axiaoxin/vim-json-line-format'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -95,6 +96,9 @@ command -nargs=0 -bar Update if &modified
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+"" Jump to the absolute line
+nnoremap <CR> G
+
 syntax enable
 set t_Co=256
 set background=dark
@@ -103,7 +107,7 @@ let g:molokai_original = 1
 "" setting delete key to blackhold register
 nnoremap d "_d
 vnoremap d "_d
-set clipboard=unnamed
+set clipboard=unnamedplus
 set mouse=a
 
 set smarttab 
