@@ -1,16 +1,27 @@
 export PATH=HOME/.local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib
 export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH
-alias ls='ls'
-alias l='ls -l -h -tr'
 export PROMPT_COMMAND="myLocalHistory;set_prompt"
 export CLICOLOR=1
 export LSCOLORS=Exfxcxdxbxegedabagacad
-#LS_COLORS=$LS_COLORS:'di=0;31:fi=0;32' ; export LS_COLORS
-if [ "$TERM" == "xterm" ]; then
-    # No it isn't, it's gnome-terminal
-    export TERM=xterm-256color
-fi
+
+case $SHELL in
+*/zsh)
+	if [[ "$TERM" = "xterm" ]]; then
+    		export TERM=xterm-256color
+	fi
+	;;
+*/bash)
+	if [[ "$TERM" == "xterm" ]]; then
+    		export TERM=xterm-256color
+	fi
+	;;
+*)
+	;;
+esac
+
+alias ls='ls'
+alias l='ls -l -h -tr'
 
 function gh()
 {
