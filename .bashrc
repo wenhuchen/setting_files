@@ -1,9 +1,6 @@
-export PATH=/usr/local/bin:$HOME/local/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/local/lib
-export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
-export FUEL_DATA_PATH=$HOME/ebay_translation/blocks-data
-alias mou='open -a $HOME/Applications/Mou.app'
-alias vim=/usr/local/Cellar/vim/7.4.979/bin/vim
+export PATH=HOME/.local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib
+export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH
 alias ls='ls'
 alias l='ls -l -h -tr'
 export PROMPT_COMMAND="myLocalHistory;set_prompt"
