@@ -1,4 +1,4 @@
-export $PATH=HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib
 export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH
 export PROMPT_COMMAND="myLocalHistory;set_prompt"
