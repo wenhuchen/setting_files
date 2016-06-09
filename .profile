@@ -1,13 +1,9 @@
-export WORKON=$HOME/.virtualenv
-source $HOME/.local/bin/virtualenvwrapper.sh
-source ~/.bashrc
-workon tf-env
-screen_cd()
-{
-    cd $1
-    screen -X chdir $PWD
-}
-if [ "$TERM" == 'screen' ]; then
-    alias cd=scr_cd
+export WORKON_HOME=$HOME/.virtualenv
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+export  VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--system-site-packages'
+if [ -f /usr/local/bin/virtualenvwrapper.sh ];then 
+    source /usr/local/bin/virtualenvwrapper.sh 
+elif [ -f $HOME/.local/bin/virtualenvwrapper.sh ];then
+    source $HOME/.local/bin/virtualenvwrapper.sh
 fi
-. /Users/wenhuchen/torch/install/bin/torch-activate 

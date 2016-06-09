@@ -1,4 +1,5 @@
 # Path to your oh-my-zsh installation.
+echo "Welcome to wenhu chen's macbook, this terminal is using zsh"
 export ZSH=/Users/wenhuchen/.oh-my-zsh
 precmd() {eval "$PROMPT_COMMAND"}
 # Set name of the theme to load.
@@ -100,24 +101,25 @@ function myLocalHistory()
 function get_PS1()
 {
 	PS1='%{$fg[yellow]%}$? ' 
-	if [ -z "$VIRTUAL_ENV_DISABLE_PROMPT" ] ; then
-	    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
-	        PS1+='%{$fg[blue]%}[`basename \`dirname \"$VIRTUAL_ENV\"\``] '
-	    elif [ "$VIRTUAL_ENV" != "" ]; then
-	        PS1+='%{$fg[blue]%}(`basename \"$VIRTUAL_ENV\"`) '
-	    fi
-	fi
+	#if [ -z "$VIRTUAL_ENV_DISABLE_PROMPT" ] ; then
+	#    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
+	#       PS1+='%{$fg[blue]%}[`basename \`dirname \"$VIRTUAL_ENV\"\``] '
+	#    elif [ "$VIRTUAL_ENV" != "" ]; then
+	#        PS1+='%{$fg[blue]%}(`basename \"$VIRTUAL_ENV\"`) '
+	#    fi
+	#fi
 	PS1+='%{$fg[green]%}%n@%m '
 	PS1+='%{$fg[red]%}`pwd`%# '
 	PS1+='%{$fg[cyan]%}'
 	echo "$PS1"
 }
+
 PS1=$(get_PS1)
 export PROMPT_COMMAND='$(myLocalHistory)'
-export PATH=$HOME/.local/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export SCALA_HOME=$HOME/scala-2.11.8
+export PATH=$HOME/local/bin:$HOME/.local/bin:$SCALA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib:$HOME/local/lib:$LD_LIBRARY_PATH
 export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages:$PYTHONPATH
-#export CLICOLOR=1
-#export LS_COLORS="di=31;41:ln=31;41:so=31;41:pi=31;41:ex=31;41:bd=31;41:cd=31;41:su=31;41:sg=31;41:tw=31;41:ow=31;41:"
-alias vim="/usr/local/Cellar/vim/7.4.1864_1/bin/vim"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
+export CLICOLOR=1
 alias l='ls -lG -h -tr'
