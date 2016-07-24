@@ -4,17 +4,13 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-lua-inspect'
+Plugin 'tpope/vim-fugitive'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'walm/jshint.vim'
@@ -25,14 +21,15 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'avakhov/vim-yaml'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'axiaoxin/vim-json-line-format'
-Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'qpkorr/vim-bufkill'
+" Plugin 'justmao945/vim-clang'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'junegunn/vim-emoji'
 Plugin 'mhinz/vim-startify'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'tomasr/molokai'
 Plugin 'honza/vim-snippets'
@@ -98,16 +95,17 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 "" Jump to the absolute line
 nnoremap <CR> G
+inoremap <S-TAB> <C-V><TAB>
+map <C-c> :BD<cr>
 
 syntax enable
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night
 let g:molokai_original = 1
 "" setting delete key to blackhold register
 nnoremap d "_d
 vnoremap d "_d
-set clipboard=unnamedplus
+set clipboard=unnamed
 set mouse=a
 
 set smarttab 
@@ -121,7 +119,6 @@ set showmatch                   "Show matching bracets when text indicator is ov
 set nobackup                    " do not keep backup files, it's 70's style cluttering
 
 set noswapfile                  " do not write annoying intermediate swap files,
-
 
 set ttimeoutlen=50              "Solves: there is a pause when leaving insert mode
 
@@ -159,6 +156,8 @@ let g:flake8_show_in_gutter = 1
 let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
 "
+" " set background transparent
+hi Normal ctermbg=none
 " " ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -169,3 +168,37 @@ autocmd! BufRead,BufWritePost *.js :JSHint
 "
 " " vim-table-mode: markdown
 let g:table_mode_corner="|"
+" 
+" " save the log
+" let g:ycm_server_keep_logfiles = 1
+" let g:ycm_server_log_level = 'debug'
+let g:ycm_path_to_python_interpreter="/apps/daint/UES/5.2.UP04/sandbox-craystable/easybuild/software/Python/2.7.11-CrayGNU-2016.03/bin/python"
+
+" Set lua-vim interpreter
+let g:lua_compiler_name="/users/wechen/.local/bin/luac"
+let g:loaded_luainspect = 1
+
+" Set syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["cpp","hpp","c","h"] }
+
+" Set tagbar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_ctags_bin="/users/wechen/ctags-5.8/ctags"
+" autocmd VimEnter * nested :call tagbar#autoopen(1)
+autocmd FileType c,cpp nested :TagbarOpen
+" Solarized color
+let g:solarized_termcolors = 256
+let g:solarized_contrast = "low"
+let g:solarized_visibility = "high"
+set background=light
