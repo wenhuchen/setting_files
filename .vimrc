@@ -5,6 +5,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'xolox/vim-misc'
@@ -129,7 +130,6 @@ set splitright                  " Vertical splits open to the right of the curre
 set wildmode=longest,list       " Pressing <Tab> shows command suggestions similar to pressing <Tab> bash
 set cursorline cursorcolumn     " adding column cursor
 " Plugin settings
-
 let g:NERDSpaceDelims=1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -169,20 +169,18 @@ autocmd! BufRead,BufWritePost *.js :JSHint
 " " vim-table-mode: markdown
 let g:table_mode_corner="|"
 " 
-" " save the log
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
-let g:ycm_path_to_python_interpreter="/apps/daint/UES/5.2.UP04/sandbox-craystable/easybuild/software/Python/2.7.11-CrayGNU-2016.03/bin/python"
-
+"
 " Set lua-vim interpreter
-let g:lua_compiler_name="/users/wechen/.local/bin/luac"
+let g:lua_compiler_name = "/home/wc396622/torch/install/bin/luajit"
 let g:loaded_luainspect = 1
 
-" Set syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Set syntastic
+set shell=/usr/local_rwth/bin/zsh
+let g:syntastic_python_pylint_exec = 'pylint1.6'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -194,7 +192,7 @@ let g:syntastic_mode_map = {
 
 " Set tagbar
 nmap <F8> :TagbarToggle<CR>
-let g:tagbar_ctags_bin="/users/wechen/ctags-5.8/ctags"
+let g:tagbar_ctags_bin="/home/wc396622/ctags-5.8/ctags"
 " autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd FileType c,cpp nested :TagbarOpen
 " Solarized color
