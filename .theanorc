@@ -1,8 +1,9 @@
 [global]
-device = gpu 
+device = cpu
 floatX = float32
 allow_gc = True
 base_compiledir=/tmp/%(user)s/theano.NOBACKUP
-on_unused_input = warn
+on_unused_input = ignore
+blas.ldflags=-L/usr/lib/openblas-base
 [nvcc]
 fastmath = True

@@ -23,8 +23,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'avakhov/vim-yaml'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'qpkorr/vim-bufkill'
-" Plugin 'justmao945/vim-clang'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'justmao945/vim-clang'
+Plugin 'chriskempson/base16-vim'
 Plugin 'junegunn/vim-emoji'
 Plugin 'mhinz/vim-startify'
 Plugin 'terryma/vim-multiple-cursors'
@@ -32,7 +32,6 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
-Plugin 'tomasr/molokai'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
@@ -55,6 +54,10 @@ set pastetoggle=<F2>
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" use darkburn color scheme
+" colorscheme darkburn
+
 set laststatus=2
 
 set backspace=indent,eol,start  "allow backspacing over everything in insert mode
@@ -69,28 +72,27 @@ set incsearch                   "do incremental searching
 
 set nu                          "show line numbers
 
-set expandtab                   "use spaces instead of tabs
-
-set tabstop=4                   "insert 4 spaces whenever the tab key is pressed
-
-set shiftwidth=4                "set indentation to 4 spaces
-
 set hlsearch                    "highlight search terms
 
 set ic                          "Ignore Case during searches
 
 set autoindent                  "start new line at the same indentation level
 
+set shiftwidth=4                "set indentation to 4 spaces
+
+" set expandtab                   "use spaces instead of tabs
+" set tabstop=4                   "insert 4 spaces whenever the tab key is pressed
+
 syntax on                       "syntax on
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified 
-                           \|    if empty(bufname('%'))
-                           \|        browse confirm write
-                           \|    else
-                           \|        confirm write
-                           \|    endif
-                           \|endif
+command -nargs=0 -bar Update if &modified
+	    \|    if empty(bufname('%'))
+		\|        browse confirm write
+		\|    else
+		    \|        confirm write
+		    \|    endif
+		    \|endif
 nmap <silent> <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
@@ -103,13 +105,19 @@ syntax enable
 set t_Co=256
 set background=dark
 let g:molokai_original = 1
+
 "" setting delete key to blackhold register
 nnoremap d "_d
 vnoremap d "_d
 set clipboard=unnamed
-set mouse=a
 
-set smarttab 
+"" mouse click setting
+"" set mouse=a
+
+"" auto format your file
+noremap <F3> :Autoformat<CR>
+
+set smarttab
 
 syntax enable                   "syntax highlighting
 
@@ -168,10 +176,10 @@ autocmd! BufRead,BufWritePost *.js :JSHint
 "
 " " vim-table-mode: markdown
 let g:table_mode_corner="|"
-" 
+"
 "
 " Set lua-vim interpreter
-let g:lua_compiler_name = "/home/wc396622/torch/install/bin/luajit"
+let g:lua_compiler_name = "/data/users/v-wenhch/torch/install/bin/luajit"
 let g:loaded_luainspect = 1
 
 set statusline+=%#warningmsg#
@@ -179,7 +187,6 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Set syntastic
-set shell=/usr/local_rwth/bin/zsh
 let g:syntastic_python_pylint_exec = 'pylint1.6'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -187,16 +194,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "passive_filetypes": ["cpp","hpp","c","h"] }
+	    \ "mode": "active",
+	    \ "passive_filetypes": ["cpp","hpp","c","h"] }
 
 " Set tagbar
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_ctags_bin="/home/wc396622/ctags-5.8/ctags"
 " autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd FileType c,cpp nested :TagbarOpen
-" Solarized color
-let g:solarized_termcolors = 256
-let g:solarized_contrast = "low"
-let g:solarized_visibility = "high"
-set background=light
