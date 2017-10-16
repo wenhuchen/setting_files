@@ -92,31 +92,14 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -lhtrG --color=auto'
 
-# look into the history
+export CUDA_HOME=/usr/local/cuda-8.0
 export CUDNN_HOME=$HOME/cuda
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$CUDNN_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export MONO_HOME=$HOME/mono
+export PATH=$MONO_HOME/bin:$CUDA_HOME/bin:$HOME/.local/bin:${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$HOME/.local/lib:$MONO_HOME/lib:$CUDA_HOME/lib64:$CUDNN_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export NLTK_DATA=/mnt/sshd/wenhuchen/nltk_data:${NLTK_DATA}
 export CPATH=$CUDNN_HOME/include:$CPATH
-export LIBRARY_PATH=$CUDNN_HOME/lib64:$LD_LIBRARY_PATH
-
-# save the history file
 export PROMPT_COMMAND="myLocalHistory"
-function gh()
-{
-    grep -a "$1" .history 2>/dev/null
-}
-
-function tailh()
-{
-    tail .history 2>/dev/null
-}
-
-function myLocalHistory()
-{
-#    if [ `ls -ld $PWD | awk '{print $3}'` == "$USER" ] ; then
-    ((date +%F.%H-%M-%S | tr -d '\n' ; history | tail -1 | sed 's:^ *[0-9]* ::g' ) | perl -ne 'print if(!/^(\S+) (ll|ls|lltr|fgt|cd|m|w|e|firefox|less|zless|th|gh|hg|file|ssh|ssp|qstat|qm|gv|acroread|corpusView\.py)\s+.*/);' >>.history) 2>/dev/null
-#    fi
-}
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -142,5 +125,26 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function p()
+{
+    ps aux | grep "$1"
+}
 
-. /data/users/v-wenhch/torch/install/bin/torch-activate
+function gh()
+{
+    grep -a "$1" .history 2>/dev/null
+}
+
+function tailh()
+{
+    tail .history 2>/dev/null
+}
+
+function myLocalHistory()
+{
+#    if [ `ls -ld $PWD | awk '{print $3}'` == "$USER" ] ; then
+    ((date +%F.%H-%M-%S | tr -d '\n' ; history | tail -1 | sed 's:^ *[0-9]* ::g' ) | perl -ne 'print if(!/^(\S+) (ll|ls|lltr|fgt|cd|m|w|e|firefox|less|zless|th|gh|hg|file|ssh|ssp|qstat|qm|gv|acroread|corpusView\.py)\s+.*/);' >>.history) 2>/dev/null
+#    fi
+}
+
+. /mnt/hdd/wenhuchen/distro/install/bin/torch-activate
