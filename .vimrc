@@ -74,9 +74,9 @@ set nu                          "show line numbers
 set hlsearch                    "highlight search terms
 
 set ic                          "Ignore Case during searches
-set tabstop=2                   "insert 4 spaces whenever the tab key is pressed
-set shiftwidth=2                "set indentation to 4 spaces
-set softtabstop=2               "insert 4 spaces whenever the tab key is pressed
+set tabstop=4                   "insert 4 spaces whenever the tab key is pressed
+set shiftwidth=4                "set indentation to 4 spaces
+set softtabstop=4               "insert 4 spaces whenever the tab key is pressed
 set expandtab                   "use spaces instead of tabs
 set autoindent
 
@@ -199,5 +199,5 @@ nmap <F8> :TagbarToggle<CR>
 autocmd FileType c,cpp nested :TagbarOpen
 aug python
     " ftype/python.vim overwrites this
-    au FileType python setlocal ts=2 sts=2 sw=2
+    au FileType python setlocal ts=4 sts=4 sw=4
 aug end 
