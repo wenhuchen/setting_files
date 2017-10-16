@@ -94,10 +94,8 @@ alias l='ls -lhtrG --color=auto'
 
 export CUDA_HOME=/usr/local/cuda-8.0
 export CUDNN_HOME=$HOME/cuda
-export MONO_HOME=$HOME/mono
-export PATH=$MONO_HOME/bin:$CUDA_HOME/bin:$HOME/.local/bin:${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=$HOME/.local/lib:$MONO_HOME/lib:$CUDA_HOME/lib64:$CUDNN_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export NLTK_DATA=/mnt/sshd/wenhuchen/nltk_data:${NLTK_DATA}
+export PATH=$CUDA_HOME/bin:$HOME/.local/bin:${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$HOME/.local/lib:$CUDA_HOME/lib64:$CUDNN_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export CPATH=$CUDNN_HOME/include:$CPATH
 export PROMPT_COMMAND="myLocalHistory"
 
