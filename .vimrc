@@ -18,7 +18,6 @@ Plugin 'walm/jshint.vim'
 Plugin 'moll/vim-node'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'sickill/vim-monokai'
-Plugin 'Yggdroot/indentLine'
 Plugin 'nvie/vim-flake8'
 Plugin 'avakhov/vim-yaml'
 Plugin 'davidhalter/jedi-vim'
@@ -75,13 +74,11 @@ set nu                          "show line numbers
 set hlsearch                    "highlight search terms
 
 set ic                          "Ignore Case during searches
-
-set autoindent                  "start new line at the same indentation level
-
+set tabstop=4                   "insert 4 spaces whenever the tab key is pressed
 set shiftwidth=4                "set indentation to 4 spaces
-
-" set expandtab                   "use spaces instead of tabs
-" set tabstop=4                   "insert 4 spaces whenever the tab key is pressed
+set softtabstop=4               "insert 4 spaces whenever the tab key is pressed
+set expandtab                   "use spaces instead of tabs
+set autoindent
 
 syntax on                       "syntax on
 " If the current buffer has never been saved, it will have no name,
@@ -112,12 +109,12 @@ vnoremap d "_d
 set clipboard=unnamed
 
 "" mouse click setting
-"" set mouse=a
+set mouse=a
 
 "" auto format your file
 noremap <F3> :Autoformat<CR>
 
-set smarttab
+"" set smarttab
 
 syntax enable                   "syntax highlighting
 
@@ -154,7 +151,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 "
 " " jedi
 autocmd FileType python setlocal completeopt-=preview
-let g:jedi#completions_command = "<C-n>"
 " flake8
 let g:flake8_show_in_file = 1
 let g:flake8_show_in_gutter = 1
@@ -199,6 +195,9 @@ let g:syntastic_mode_map = {
 
 " Set tagbar
 nmap <F8> :TagbarToggle<CR>
-let g:tagbar_ctags_bin="/home/wc396622/ctags-5.8/ctags"
 " autocmd VimEnter * nested :call tagbar#autoopen(1)
 autocmd FileType c,cpp nested :TagbarOpen
+aug python
+    " ftype/python.vim overwrites this
+    au FileType python setlocal ts=4 sts=4 sw=4
+aug end 
