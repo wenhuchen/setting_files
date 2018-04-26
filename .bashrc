@@ -141,6 +141,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-
-. /data/users/v-wenhch/torch/install/bin/torch-activate
