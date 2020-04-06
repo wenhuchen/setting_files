@@ -25,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -90,10 +90,10 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -lhtrG --color=auto'
+alias l='ls -lhtrG'
+alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias python='python3'
 
-export CUDA_HOME=/usr/local/cuda-8.0
-export CUDNN_HOME=$HOME/cuda
 export PATH=$CUDA_HOME/bin:$HOME/.local/bin:${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=$HOME/.local/lib:$CUDA_HOME/lib64:$CUDNN_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export CPATH=$CUDNN_HOME/include:$CPATH
@@ -102,7 +102,6 @@ export PROMPT_COMMAND="myLocalHistory"
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
