@@ -1,199 +1,245 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+"                                                                              "
+"                       __   _ _ _ __ ___  _ __ ___                            "
+"                       \ \ / / | '_ ` _ \| '__/ __|                           "
+"                        \ V /| | | | | | | | | (__                            "
+"                         \_/ |_|_| |_| |_|_|  \___|                           "
+"                                                                              "
+"                                                                              "
+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+let $vimhome=fnamemodify(resolve(expand("~/.vimrc")), ':p:h')
+let $vundle=$vimhome."/bundle/Vundle.vim"
+
+" Be iMproved
+set nocompatible
+
+"=====================================================
+"" Vundle settings
+"=====================================================
+filetype off
+set rtp+=$vundle
 call vundle#begin()
-" let Vundle manage Vundle, required
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'xolox/vim-misc'
-Plugin 'tpope/vim-fugitive'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'walm/jshint.vim'
-Plugin 'moll/vim-node'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'sickill/vim-monokai'
-Plugin 'nvie/vim-flake8'
-Plugin 'avakhov/vim-yaml'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'justmao945/vim-clang'
-Plugin 'chriskempson/base16-vim'
-Plugin 'junegunn/vim-emoji'
-Plugin 'mhinz/vim-startify'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'tpope/vim-surround'
-Plugin 'honza/vim-snippets'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-set pastetoggle=<F2>
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-" use darkburn color scheme
-" colorscheme darkburn
+    Plugin 'VundleVim/Vundle.vim'               " let Vundle manage Vundle, required
 
+    "-------------------=== Code/Project navigation ===-------------
+    Plugin 'scrooloose/nerdtree'                " Project and file navigation
+    Plugin 'jistr/vim-nerdtree-tabs'
+    " Plugin 'majutsushi/tagbar'                  " Class/module browser
+    Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
+
+    "-------------------=== Other ===-------------------------------
+    Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
+    Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
+    Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
+    Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
+    Plugin 'rosenfeld/conque-term'              " Consoles as buffers
+    Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
+    Plugin 'flazz/vim-colorschemes'             " Colorschemes
+
+    "-------------------=== Snippets support ===--------------------
+    Plugin 'garbas/vim-snipmate'                " Snippets manager
+    Plugin 'MarcWeber/vim-addon-mw-utils'       " dependencies #1
+    Plugin 'tomtom/tlib_vim'                    " dependencies #2
+    Plugin 'honza/vim-snippets'                 " snippets repo
+
+    "-------------------=== Languages support ===-------------------
+    Plugin 'tpope/vim-commentary'               " Comment stuff out
+    Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
+    Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
+    Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
+
+    "-------------------=== Python  ===-----------------------------
+    Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+    Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+
+call vundle#end()                           " required
+filetype on
+filetype plugin on
+filetype plugin indent on
+
+"=====================================================
+"" General settings
+"=====================================================
+syntax enable                               " syntax highlight
+
+set t_Co=256                                " set 256 colors
+colorscheme wombat256mod                    " set color scheme
+
+set number                                  " show line numbers
+set ruler
+set ttyfast                                 " terminal acceleration
+
+set tabstop=4                               " 4 whitespaces for tabs visual presentation
+set shiftwidth=4                            " shift lines by 4 spaces
+set smarttab                                " set tabs for a shifttabs logic
+set expandtab                               " expand tabs into spaces
+set autoindent                              " indent when moving to the next line while writing code
+
+set cursorline                              " shows line under the cursor's line
+set showmatch                               " shows matching part of bracket pairs (), [], {}
+
+set enc=utf-8	                            " utf-8 by default
+
+set nobackup 	                            " no backup files
+set nowritebackup                           " only in case you don't want a backup file while editing
+set noswapfile 	                            " no swap files
+
+set backspace=indent,eol,start              " backspace removes all (indents, EOLs, start) What is start?
+
+set scrolloff=10                            " let 10 lines before/after cursor during scroll
+
+set clipboard=unnamed                       " use system clipboard
+
+set exrc                                    " enable usage of additional .vimrc files from working directory
+set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
+
+" Additional mappings for Esc (useful for MacBook with touch bar)
+inoremap jj <Esc>
+inoremap jk <Esc>
+
+"=====================================================
+"" Tabs / Buffers settings
+"=====================================================
+tab sball
+set switchbuf=useopen
 set laststatus=2
+nmap <F9> :bprev<CR>
+nmap <F10> :bnext<CR>
+nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
-set backspace=indent,eol,start  "allow backspacing over everything in insert mode
+"" Search settings
+"=====================================================
+set incsearch	                            " incremental search
+set hlsearch	                            " highlight search results
 
-set history=50                  "keep 50 lines of command line history
+"=====================================================
+"" AirLine settings
+"=====================================================
+let g:airline_theme='badwolf'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#formatter='unique_tail'
+let g:airline_powerline_fonts=1
 
-set ruler                       "show the cursor position all the time
+"=====================================================
+"" TagBar settings
+"=====================================================
+"let g:tagbar_autofocus=0
+"let g:tagbar_width=42
+"autocmd BufEnter *.py :call tagbar#autoopen(0)
 
-set showcmd                     "display incomplete commands
+"=====================================================
+"" NERDTree settings
+"=====================================================
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NERDTree
+let NERDTreeWinSize=40
+autocmd VimEnter * NERDTree " Load NERDTree only if vim is run without arguments
+nmap " :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-set incsearch                   "do incremental searching
+"=====================================================
+"" SnipMate settings
+"=====================================================
+let g:snippets_dir='~/.vim/vim-snippets/snippets'
 
-set nu                          "show line numbers
+"=====================================================
+"" Riv.vim settings
+"=====================================================
+let g:riv_disable_folding=1
 
-set hlsearch                    "highlight search terms
+"=====================================================
+"" Python settings
+"=====================================================
 
-set ic                          "Ignore Case during searches
-set tabstop=4                   "insert 4 spaces whenever the tab key is pressed
-set shiftwidth=4                "set indentation to 4 spaces
-set softtabstop=4               "insert 4 spaces whenever the tab key is pressed
-set expandtab                   "use spaces instead of tabs
-set autoindent
+" python executables for different plugins
+let g:pymode_python='python3'
+let g:syntastic_python_python_exec='python3'
 
-syntax on                       "syntax on
-" If the current buffer has never been saved, it will have no name,
-" call the file browser to save it, otherwise just save it.
-command -nargs=0 -bar Update if &modified
-	    \|    if empty(bufname('%'))
-		\|        browse confirm write
-		\|    else
-		    \|        confirm write
-		    \|    endif
-		    \|endif
-nmap <silent> <F3> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$']
+" rope
+let g:pymode_rope=0
+let g:pymode_rope_completion=0
+let g:pymode_rope_complete_on_dot=0
+let g:pymode_rope_auto_project=0
+let g:pymode_rope_enable_autoimport=0
+let g:pymode_rope_autoimport_generate=0
+let g:pymode_rope_guess_project=0
 
-"" Jump to the absolute line
-nnoremap <CR> G
-inoremap <S-TAB> <C-V><TAB>
-map <C-c> :BD<cr>
+" documentation
+let g:pymode_doc=0
+let g:pymode_doc_bind='K'
 
-syntax enable
-set t_Co=256
-set background=dark
-let g:molokai_original = 1
+" lints
+let g:pymode_lint=0
 
-"" setting delete key to blackhold register
-nnoremap d "_d
-vnoremap d "_d
-set clipboard=unnamed
+" virtualenv
+let g:pymode_virtualenv=1
 
-"" mouse click setting
+" breakpoints
+let g:pymode_breakpoint=1
+let g:pymode_breakpoint_key='<leader>b'
+
+" setting mouse
 set mouse=a
+set pastetoggle=<C-P>
 
-"" auto format your file
-noremap <F3> :Autoformat<CR>
+" syntax highlight
+let g:pymode_syntax=1
+let g:pymode_syntax_slow_sync=1
+let g:pymode_syntax_all=1
+let g:pymode_syntax_print_as_function=g:pymode_syntax_all
+let g:pymode_syntax_highlight_async_await=g:pymode_syntax_all
+let g:pymode_syntax_highlight_equal_operator=g:pymode_syntax_all
+let g:pymode_syntax_highlight_stars_operator=g:pymode_syntax_all
+let g:pymode_syntax_highlight_self=g:pymode_syntax_all
+let g:pymode_syntax_indent_errors=g:pymode_syntax_all
+let g:pymode_syntax_string_formatting=g:pymode_syntax_all
+let g:pymode_syntax_space_errors=g:pymode_syntax_all
+let g:pymode_syntax_string_format=g:pymode_syntax_all
+let g:pymode_syntax_string_templates=g:pymode_syntax_all
+let g:pymode_syntax_doctests=g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs=g:pymode_syntax_all
+let g:pymode_syntax_builtin_types=g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions=g:pymode_syntax_all
+let g:pymode_syntax_docstrings=g:pymode_syntax_all
 
-"" set smarttab
+" highlight 'long' lines (>= 80 symbols) in python files
+augroup vimrc_autocmds
+    autocmd!
+    autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
+    autocmd FileType python,rst,c,cpp set nowrap
+    autocmd FileType python,rst,c,cpp set colorcolumn=80
+augroup END
 
-syntax enable                   "syntax highlighting
+" code folding
+let g:pymode_folding=0
 
-set cmdheight=1                 "The commandbar height
+" pep8 indents
+let g:pymode_indent=1
 
-set showmatch                   "Show matching bracets when text indicator is over them
+" code running
+let g:pymode_run=1
+let g:pymode_run_bind='<F5>'
 
-set nobackup                    " do not keep backup files, it's 70's style cluttering
+" syntastic
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_aggregate_errors=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_error_symbol='X'
+let g:syntastic_style_error_symbol='X'
+let g:syntastic_warning_symbol='x'
+let g:syntastic_style_warning_symbol='x'
+let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
 
-set noswapfile                  " do not write annoying intermediate swap files,
+" YouCompleteMe
+set completeopt-=preview
 
-set ttimeoutlen=50              "Solves: there is a pause when leaving insert mode
+let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=0
 
-set splitbelow                  " Horizontal splits open below current file
-
-set splitright                  " Vertical splits open to the right of the current file
-
-set wildmode=longest,list       " Pressing <Tab> shows command suggestions similar to pressing <Tab> bash
-set cursorline cursorcolumn     " adding column cursor
-" Plugin settings
-let g:NERDSpaceDelims=1
-let NERDTreeIgnore=['\.pyc$', '\~$']
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:ctrlp_show_hidden = 1
-let g:instant_markdown_slow = 1
-let g:nerdtree_tabs_open_on_console_startup=1
-"
-" airline
-let g:airline_section_y = '%{strftime("%H:%M")}'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-"
-" " jedi
-autocmd FileType python setlocal completeopt-=preview
-" flake8
-let g:flake8_show_in_file = 1
-let g:flake8_show_in_gutter = 1
-" autocmd! BufRead,BufWritePost *.py call Flake8()
-"
-" " gitgutter
-let g:gitgutter_sign_modified = '*'
-let g:gitgutter_sign_removed = '-'
-"
-" " set background transparent
-hi Normal ctermbg=none
-" " ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"
-" " jshint
-autocmd! BufRead,BufWritePost *.js :JSHint
-"
-" " vim-table-mode: markdown
-let g:table_mode_corner="|"
-"
-"
-" Set lua-vim interpreter
-let g:lua_compiler_name = "/data/users/v-wenhch/torch/install/bin/luajit"
-let g:loaded_luainspect = 1
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" Set syntastic
-let g:syntastic_python_pylint_exec = 'pylint1.6'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = {
-	    \ "mode": "active",
-	    \ "passive_filetypes": ["cpp","hpp","c","h"] }
-
-" Set tagbar
-nmap <F8> :TagbarToggle<CR>
-" autocmd VimEnter * nested :call tagbar#autoopen(1)
-autocmd FileType c,cpp nested :TagbarOpen
-aug python
-    " ftype/python.vim overwrites this
-    au FileType python setlocal ts=4 sts=4 sw=4
-aug end 
+nmap <leader>g :YcmCompleter GoTo<CR>
+nmap <leader>d :YcmCompleter GoToDefinition<CR>
