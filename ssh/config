@@ -1,0 +1,49 @@
+Host darth
+        HostName darth.cs.uwaterloo.ca
+        User wenhuche
+        IdentityFile ~/.ssh/id_rsa.darth
+        ForwardX11 yes
+        ForwardX11Trusted yes
+        XAuthLocation /opt/X11/bin/xauth
+
+Host waterloo
+        HostName linux.cs.uwaterloo.ca
+        User wenhuche
+        IdentityFile ~/.ssh/id_rsa.darth
+
+Host vaughan
+        HostName vremote.vectorinstitute.ai
+        User wenhuchen
+        IdentityFile ~/.ssh/id_rsa.vector
+        ForwardX11 yes
+        ForwardX11Trusted yes
+        XAuthLocation /opt/X11/bin/xauth
+
+Host graham
+        HostName graham.computecanada.ca
+        User wenhu
+        ForwardX11 yes
+        ForwardX11Trusted yes
+        IdentityFile ~/.ssh/id_rsa
+
+Host narval
+        HostName narval.computecanada.ca
+        User wenhu
+        ForwardX11Trusted yes
+        IdentityFile ~/.ssh/id_rsa
+
+Host cloudtop
+        HostName wenhuchen.c.googlers.com
+        User wenhuchen
+        ForwardAgent yes
+        ForwardX11 yes
+        ForwardX11Trusted yes
+        XAuthLocation /opt/X11/bin/xauth
+
+Host cloudtop2
+        HostName wenhu.c.googlers.com
+        User wenhuchen
+        ForwardAgent yes
+        ForwardX11 yes
+        ForwardX11Trusted yes
+        XAuthLocation /opt/X11/bin/xauth
