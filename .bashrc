@@ -91,12 +91,9 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -lhtrG'
-alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias python='python3'
 
-export PATH=$CUDA_HOME/bin:$HOME/.local/bin:${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=$HOME/.local/lib:$CUDA_HOME/lib64:$CUDNN_HOME/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export CPATH=$CUDNN_HOME/include:$CPATH
+export PATH=$HOME/.local/bin:${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=$HOME/.local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export PROMPT_COMMAND="myLocalHistory"
 
 # Add an "alert" alias for long running commands.  Use like so:
