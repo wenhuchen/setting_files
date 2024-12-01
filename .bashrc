@@ -96,6 +96,9 @@ export PATH=$HOME/.local/bin:${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=$HOME/.local/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export PROMPT_COMMAND="myLocalHistory"
 
+alias tmuxc='tmux new-session -s'
+alias tmuxa='tmux a -t'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -136,7 +139,7 @@ function tailh()
 
 function myLocalHistory()
 {
-#    if [ `ls -ld $PWD | awk '{print $3}'` == "$USER" ] ; then
+    if [ `ls -ld $PWD | awk '{print $3}'` == "$USER" ] ; then
     ((date +%F.%H-%M-%S | tr -d '\n' ; history | tail -1 | sed 's:^ *[0-9]* ::g' ) | perl -ne 'print if(!/^(\S+) (ll|ls|lltr|fgt|cd|m|w|e|firefox|less|zless|th|gh|hg|file|ssh|ssp|qstat|qm|gv|acroread|corpusView\.py)\s+.*/);' >>.history) 2>/dev/null
-#    fi
+    fi
 }
